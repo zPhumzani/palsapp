@@ -1,0 +1,240 @@
+/// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+main {
+  @extend .container-fluid;
+  //background-color: #eee;
+  padding-bottom: 80px;
+  //width: 100%;
+  margin-top: 40px; // accommodate the navbar
+  height: 100%;
+}
+
+//navbar
+.navbar-default {
+background-color: $inverse-background;
+border-color: transparent;
+}
+
+// brand
+.navbar-default .navbar-brand {
+font-weight: 300;
+color: $inverse-text;
+}
+
+.navbar-default .navbar-brand:focus,
+.navbar-default .navbar-brand:hover {
+color: $aqua1;
+}
+
+.navbar-brand span {
+font-weight: 700;
+color: $aqua1;
+}
+
+
+// navbar links
+.navbar-default .navbar-nav > li > a {
+color: $aqua1;
+}
+.navbar-default .navbar-nav > li > a:focus,
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:active {
+color: $inverse-text;
+}
+
+
+// search form
+.navbar-form .form-control {
+border-color: $navy1;
+}
+.form-control:focus {
+border-color: $border-focus;
+}
+
+
+// mobile trigger
+.navbar-default .navbar-toggle {
+border-color: $white;
+}
+.navbar-toggle {
+background: $navy2;
+border: none;
+}
+
+.navbar-default .navbar-toggle:focus,
+.navbar-default .navbar-toggle:hover {
+background-color: $aqua1;
+}
+.navbar-default .navbar-toggle .icon-bar {
+background-color: $white;
+}
+
+@media (max-width: 767px) {
+.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+color: $primary-link-color;
+}
+.navbar-default .navbar-nav .open .dropdown-menu > li >a:focus,
+.navbar-default .navbar-nav .open .dropdown-menu > li >a:hover {
+color: $white;
+}
+}
+
+img.main-avatar {
+width: 100%;
+height: auto;
+}
+
+.sidebar-left h2 {
+margin-top: ($margin * 1.5);
+margin-bottom: ($margin * 1.5);
+line-height: 0;
+}
+
+.sidebar-left li {
+margin-bottom: ($margin - 0.5);
+}
+
+.content-feed h3 {
+margin-top: 0;
+margin-bottom: ($margin - 0.5);
+}
+
+.feed-meta {
+font-size: ($font-size - 0.25);
+}
+
+.feed-meta ul {
+margin-bottom: 0;
+}
+
+.well {
+background: $secondary-background;
+border: none;
+padding: ($padding * 2);
+box-shadow: none;
+
+}
+
+.sidebar-right .well div {
+margin-bottom: $margin;
+}
+
+.sidebar-right .well div p {
+margin-bottom: 0;
+}
+
+.sidebar-right h5 {
+font-weight: 700;
+margin-top: 0;
+margin-bottom: ($margin * 1.5);
+color: $heading-text;
+}
+
+.sidebar-left li i {
+margin-right: 5px;
+}
+
+
+.alert {
+padding: $padding;
+}
+
+.alert-info {
+background: $aqua1;
+text-align: center;
+border-color: $aqua1;
+color: $white;
+}
+
+.page-header {
+margin-top: 0;
+}
+h1 {
+font-weight: 300;
+color: $heading-text;
+}
+.center {
+text-align: center;
+}
+
+.footer-top {
+background: $bm-black;
+color: $white;
+padding: ($padding * 2);
+}
+
+.footer-top h5 {
+text-transform: uppercase;
+color: $bm-accent;
+font-size: ($font-size - 0.25);
+letter-spacing: 1px;
+}
+
+
+.footer-top a,
+.footer-bottom a {
+color: $white;
+text-decoration: none;
+}
+.footer-top a:hover,
+.footer-bottom a:hover {
+color: $bm-light-grey;
+}
+
+
+.advertisement {
+text-align: center;
+}
+.advertisement .well {
+margin: 0 ($margin * 4);
+}
+
+.footer-bottom {
+background-color: $inverse-background;
+color: $white;
+padding: ($padding * 2);
+}
+
+.social-media div {
+  @extend .list-inline;
+  display: inline-block;
+  margin: 0 ($margin - 0.5);
+}
+
+.well.alternate {
+background: $inverse-background;
+}
+
+.well.alternate ul.list-inline {
+margin-top: 10px;
+margin-bottom: 0;
+}
+
+//navbar
+#mobile_nav {
+  @extend .text-center;
+  background-color: $inverse-background;
+  border-color: transparent;
+  padding: 15px 20px;
+
+  ul {
+  	color: #000;
+  	li {
+  	  color: #000;
+  	}
+  	a {
+  	  color: #fff;
+  	  &:hover {
+  	    background-color: $bm-primary;
+  	  }
+  	}
+  }
+}
+
+#post_row {
+	margin: 10px 2px;
+	padding: 10px 2px;
+	border-bottom: 1px solid #fff;
+}

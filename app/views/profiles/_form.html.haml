@@ -1,0 +1,15 @@
+= simple_form_for([user, @profile]) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :date_of_birth
+    = f.input :location
+    = f.input :languages
+    = f.input :interest
+    = f.input :favorite_movies
+    = f.input :favorite_music
+    = f.input :bio
+    = f.input :favorite_qoutes   
+
+  .form-actions
+    = f.button :submit

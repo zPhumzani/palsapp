@@ -1,0 +1,31 @@
+!!!
+%html
+  %head
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
+    %title= content_for?(:title) ? yield(:title) : 'Palsmaker'
+    %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Palsmaker'}"}
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    %header
+      = render 'layouts/navigation'
+    %article.container.text-center
+      = render 'layouts/messages'
+    %main
+      .row
+        -# left side 
+        .col-lg-3
+          .sidebar-left
+            = render 'layouts/mailboxes_nav'
+        .col-lg-6
+          .content-feed
+            .well
+              %h1.page-header
+                Messages
+                %span.pull-right
+                  = link_to fa_icon('bell') + "Compose", new_mailboxer_conversation_path, class: 'btn btn-success text-right'
+              = yield
+        .col-lg-3
+          .sidebar-right
+            = render 'layouts/sidebar_right'

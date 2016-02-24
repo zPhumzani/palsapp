@@ -1,0 +1,50 @@
+!!!
+%html
+  %head
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
+    %title= content_for?(:title) ? yield(:title) : 'Palsmaker'
+    %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Palsmaker'}"}
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    %header
+      = render 'layouts/navigation'
+    %article.container.text-center
+      = render 'layouts/messages'
+    %main
+      .row
+        - if @show_user_right_bar
+          -# left side 
+          .col-lg-3.col-md-3.col-sm-4
+            .sidebar-left
+              = render 'layouts/user_sidebar_left'
+          .col-lg-6.col-md-6.col-sm-8
+            .content-feed
+              .well
+                = yield
+          .col-lg-3.col-md-3.col-sm-12
+            .sidebar-right
+              = render 'layouts/user_sidebar_right'
+        - else
+          -# left side 
+          .col-lg-3.col-md-3.col-sm-4
+            .sidebar-left
+              = render 'layouts/user_sidebar_left'
+          .col-lg-9.col-md-9.col-sm-8
+            .content-feed
+              .well
+                = yield
+    %footer
+      .footer-bottom.text-center
+        .row
+          .col-lg-6
+            Copyright 2015 Palsmaker
+          .col-lg-6
+            .social-media
+              %div= link_to fa_icon('facebook-official') 
+              %div= link_to fa_icon('twitter-square') 
+              %div= link_to fa_icon('github-square') 
+              %div= link_to fa_icon('linkedin-square') 
+              %div= link_to fa_icon('google-plus-square') 
+              %div= link_to fa_icon('pinterest-squrae') 

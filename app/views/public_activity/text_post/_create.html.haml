@@ -1,0 +1,24 @@
+- if @show_activity
+  %blockqoute
+    %h4= link_to activity.owner ? activity.owner : 'Guest', user_path(activity.owner.id)
+    %span.glyphicon.glyphicon-plus
+
+    - if a.trackable
+      = a.trackable.body
+    - else
+      An article that is curently deleted was added
+    %small
+      %ul.list-inline
+        %li.text-muted= "#{time_ago_in_words(a.created_at)} ago"#.strftime('%H:%M:%S %-d %B %Y')
+        %li= link_to fa_icon('reply') + 'Reply', ''
+        %li= link_to fa_icon('heart') + 'Like'
+- else
+  %div
+  %h4= link_to activity.owner ? activity.owner : 'Guest', user_path(activity.owner.id)
+  %span.glyphicon.glyphicon-plus
+  %small.text-muted= "#{time_ago_in_words(a.created_at)} ago"#.strftime('%H:%M:%S %-d %B %Y')
+  posted this activity
+  - if a.trackable
+    = link_to truncate(a.trackable.body), post_path(a.trackable)
+  - else
+    An article that is curently deleted was added

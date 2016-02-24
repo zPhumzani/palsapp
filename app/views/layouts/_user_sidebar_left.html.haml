@@ -1,0 +1,45 @@
+- if @user_profile
+  %div.thumbnail
+    - if @user.photos.present?
+      = image_tag @user.photos.last.image.url()
+    - else
+      = image_tag('anon.png')
+
+  %h2.text-center
+    = link_to @user, user_path(@user)
+
+  %ul.nav.nav-tabs.nav-stacked
+    - if (current_user and @user != current_user)
+      - if current_user.following? @user
+        %li= link_to 'Unfollow', unfollow_user_path(@user), method: :delete, class: 'btn btn-danger'
+      - else
+        %li= link_to "Follow", follow_user_path(@user), method: :post, class: 'btn btn-success'
+    - else
+      %li= link_to 'Edit Profile Picture', new_user_photo_path(@user), class: 'btn btn-primary'
+
+    %li= link_to 'Posts', user_path(@user), class: 'btn'
+    %li= link_to 'View Profile', user_profile_path(@user, @user.profile), class: "btn btn-info"
+    %li= link_to 'View photos', photos_path, class: "btn"
+      
+    - if user_signed_in?
+      - unless current_user == @user 
+        %li= link_to 'Send message', new_mailboxer_conversation_path(to: @user), class: 'btn btn-info'
+
+
+      %p= @user.bio
+      %ul.list-unstyled
+      %li= fa_icon('map-marker') + "Vancouver , BC"
+      %li= link_to fa_icon('desktop') + "website.com", ''  
+- else
+  .well
+    %h3 
+      Followers
+      %small= @followers.count
+    - @followers.each do |follower| 
+      = link_to follower, follower
+  .well
+    %h3 
+      Following 
+      %small= @leaders.count
+    - @leaders.each do |leader|
+      %p= link_to leader, leader

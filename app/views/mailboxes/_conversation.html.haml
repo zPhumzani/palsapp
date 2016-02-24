@@ -1,0 +1,27 @@
+- conversations.each do |conversation|
+  - if @trash == false
+    %p= link_to 'Empty Trash', empty_trash_mailboxer_conversations_path(conversation), class: 'btn btn-danger', data: { confirm: 'Are your sure?'}
+  .media
+    .media-left
+      - if conversation.originator.photos.present?
+        = link_to(image_tag(conversation.originator.photos.last.image.url(:thumb), width: 64), '#')
+      - else
+        = image_tag('anon.png', width: 64)
+    .media-body
+      %h4.media-heading
+      = link_to conversation.originator.name, user_path(conversation.originator)
+      %br
+      %small
+        %b Subject:
+        = conversation.subject
+        %b Date:
+        = time_ago_in_words(conversation.messages.last.created_at)
+
+      %p= truncate conversation.messages.last.body, length: 145
+      = link_to 'View', conversation
+
+      - if conversation.is_trashed?(current_user)
+        = link_to 'Restore', restore_mailboxer_conversation_path(conversation),method: :post, class: 'btn btn-xs btn-primary'
+      - else
+        = link_to 'Move to trash', mailboxer_conversation_path(conversation), class: 'btn btn-xs btn-danger', method: :delete, data: 'Are you sure'
+  %hr

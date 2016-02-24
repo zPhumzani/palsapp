@@ -1,0 +1,15 @@
+- if @user_profile
+  .well
+    .page-header
+      %h3 
+        Followers
+        %small.badge.pull-right= @followers.count
+    - @followers.each do |follower| 
+      = link_to follower, follower
+  .well
+    .page-header
+      %h3 
+        Following 
+        %small.badge.pull-right= @leaders.count
+    - @leaders.each do |leader|
+      %p= link_to leader, leader

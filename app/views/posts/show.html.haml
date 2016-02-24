@@ -1,0 +1,15 @@
+.well
+  .page-header
+    %h1 Post
+
+  %article
+    = render @post
+
+%article
+  = render 'comments/form'
+
+%div
+  %h3 Comments
+  = render @comments
+
+  = will_paginate @comments, renderer: BootstrapPagination::Rails

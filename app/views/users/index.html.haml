@@ -1,0 +1,21 @@
+%h1.page-header
+  Pals
+  %span.pull-right
+    %small 
+
+.row
+  - @users.find_each do |user| 
+    - unless current_user == user 
+      .col-md-4.col-sm-4.clearfix
+        .media
+          .media-left
+            - if user.photos.present?
+              = image_tag user.photos.last.image.url(:thumb)
+            - else
+              = image_tag('anon.png', width: 70)
+          .media-body
+            %h3= link_to user, user
+            %p= user.bio
+            %small
+
+= will_paginate @users, renderer: BootstrapPagination::Rails

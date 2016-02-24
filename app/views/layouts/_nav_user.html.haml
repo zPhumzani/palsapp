@@ -1,0 +1,20 @@
+%ul.nav.navbar-nav.hidden-sm
+  %li= link_to fa_icon('home')+ 'Home', root_path
+  %li= link_to fa_icon('bell') + 'Activities', activity_path
+%ul.nav.navbar-nav.navbar-right
+  %li= link_to fa_icon('user') + 'Pals', users_path
+  %li= link_to fa_icon('envelope') + 'Mailbox', mailboxes_path
+  %li= link_to "Profile", user_path(current_user)
+  %li.dropdown
+    %a#dropdownMenu{ href: user_path(current_user), class:'dropdown-toggle fa fa-user', data: {toggle: 'dropdown'}}
+      %i.gyphicon= current_user
+      %b.caret
+    %ul.dropdown-menu{ role: "menu", aria: {labelledby: "dropdownMenu"}}
+      %li= link_to "Help", help_path
+      %li= link_to "Edit Profile", edit_user_registration_path
+      %li.divider
+      %li= link_to "logout", destroy_user_session_path, method: :delete
+-#%form.navbar-form.pull-right
+  -#.group-form
+    -#%input.search-query{ type: "text", placeholder: "Search", class: 'form-control'}
+    -#%button{ type: "submit", class: 'btn btn-default'} search

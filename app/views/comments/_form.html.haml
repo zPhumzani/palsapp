@@ -1,0 +1,5 @@
+.well.alternate
+  = simple_form_for [@post, @post.comments.build] do |f| 
+    = f.input :body, label: false
+    = f.input :post_id, as: :hidden
+    = f.submit class: 'btn btn-sm btn-primary'

@@ -1,0 +1,7 @@
+- if user_signed_in?
+  %article
+    = render 'text_posts/form'
+  %article
+    = render @posts
+
+  = will_paginate @posts, renderer: BootstrapPagination::Rails

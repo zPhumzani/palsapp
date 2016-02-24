@@ -1,0 +1,8 @@
+.well
+  .thumbnail
+    = image_tag(@photo.image.url)
+    %p.lead.text-center= @photo.title
+
+= link_to 'Edit', edit_photo_path(@photo)
+\|
+= link_to 'Back', photos_path

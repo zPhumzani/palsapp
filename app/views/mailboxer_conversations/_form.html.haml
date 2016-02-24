@@ -1,0 +1,11 @@
+= form_for(:message, url: :mailboxer_conversations) do |f|
+
+  .form-group
+    = f.select :user, recipients_options(@chosen_recipient), multiple: true, class: 'form-control'
+  .form-group
+    = f.text_field :subject, class: 'form-control'
+  .form-group
+    = f.text_area :body, class: 'form-control'
+
+  .form-actions
+    = f.button :submit

@@ -1,0 +1,7 @@
+%h1.page-header Notitfications
+.alert.alert-info
+  = fa_icon('bell') + '5 New Notitfications'
+.content-feed
+  = render_activity @activities
+
+  = will_paginate @activities, renderer: BootstrapPagination::Rails

@@ -1,0 +1,26 @@
+%div.thumbnail
+  - if current_user.photos.present?
+    = image_tag(current_user.photos.last.image, class: "main-avatar")
+
+%h2.text-center
+  = link_to current_user, user_path(current_user)
+%p= current_user.bio
+
+%ul.list-unstyled
+  %li= fa_icon('map-marker') + current_user.location
+  %li= link_to fa_icon('desktop') + "website.com", ''  
+  %li{ class: active_page(:inbox) }
+    = link_to mailbox_inbox_path do 
+      %span.label.label-danger.pull-right= unread_messages_count
+      %em.fa.fa-inbox.fa-lg
+      %span Inbox
+
+  %li{ class: active_page(:sent) }
+    = link_to mailbox_sent_path do 
+      %em.fa.fa-paper-plane-o.fa-lg
+      %span Sent
+
+  %li{class: active_page(:trash) }
+    = link_to mailbox_trash_path do 
+      %em.fa.fa-trash-o.fa-lg
+      %span Trash

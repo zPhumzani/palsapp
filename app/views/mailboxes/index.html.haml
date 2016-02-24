@@ -1,0 +1,6 @@
+
+%h2 Your Conversations
+
+= render 'conversation', conversations: @mailboxes
+
+= will_paginate @mailboxes

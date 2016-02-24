@@ -1,0 +1,10 @@
+.well.alternate
+  = simple_form_for @text_post do |f|
+    = f.input :body, label: false
+    .row
+      .col-lg-6.col-md-6.col-sm-6
+        %ul.list-inline
+          %li= f.submit 'New Activity ', class: 'btn btn-xs btn-danger'
+          %li= link_to fa_icon('camera') + 'Media', new_image_post_path, class: 'btn btn-info btn-xs'
+          -#%li= link_to fa_icon('marker') + 'Location', '', class: 'btn btn-xs btn-success'
+          

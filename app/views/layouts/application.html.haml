@@ -1,0 +1,32 @@
+!!!
+%html
+  %head
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
+    %title= content_for?(:title) ? yield(:title) : 'Palsmaker'
+    %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Palsmaker'}"}
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    %header
+      = render 'layouts/navigation'
+    %article.container.text-center
+      = render 'layouts/messages'
+    %main
+      .row
+        - if user_signed_in?
+          -# left side 
+          .col-lg-3.col-md-3.col-sm-4.hidden-xs
+            .sidebar-left
+              = render 'layouts/sidebar_left'
+          .col-lg-6.col-md-6.col-sm-8
+            .content-feed
+              = yield
+          .col-lg-3.col-md-3.col-sm-12
+            .sidebar-right
+              = render 'layouts/sidebar_right'
+        - else
+          .col-md-10.col-md-offset-1
+            = yield
+    %footer.text-center
+      = render 'layouts/footer'

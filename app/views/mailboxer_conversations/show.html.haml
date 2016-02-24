@@ -1,0 +1,30 @@
+- @receipts.each do |receipt|
+  - message = receipt.message
+  .media
+    .media-left
+      - if message.sender.photos.present?
+        = link_to image_tag(message.sender.photos.last.image.url(:thumb), width: 64, height: 64)
+      - else
+        = image_tag('anon.png', width: 64)
+    .media-body
+      %h4.media-heading
+        = link_to message.sender, user_path(message.sender)
+        %br
+        %small
+          %b Subject:
+          = message.subject
+          %br
+        %small
+          %b Date:
+          = time_ago_in_words(message.created_at)
+
+      %p= message.body
+
+.well.text-right
+  = simple_form_for :message, url: reply_mailboxer_conversation_path(conversation), method: :post do |f| 
+    = f.input :body,as: :text, placeholder: 'Reply Massege', label: false
+    = f.submit 'Reply', class: "btn btn-danger"
+
+.clearfix
+
+= link_to 'Back', :back
