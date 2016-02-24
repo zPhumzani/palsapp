@@ -1,7 +1,7 @@
 - if @user_profile
   %div.thumbnail
     - if @user.photos.present?
-      = image_tag @user.photos.last.image.url()
+      = image_tag @user.photos.last.image.url, class: "main-avatar"
     - else
       = image_tag('anon.png')
 

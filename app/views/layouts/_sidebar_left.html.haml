@@ -1,6 +1,8 @@
 %div.thumbnail
   - if current_user.photos.present?
-    = image_tag(current_user.photos.last.image, class: "main-avatar")
+    = image_tag(current_user.photos.last.image.url, class: "main-avatar")
+  - else 
+    = image_tag('anon.png', class: "img-responsive")
 
 %h2.text-center
   = link_to current_user, user_path(current_user)

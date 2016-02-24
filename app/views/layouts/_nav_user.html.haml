@@ -4,16 +4,16 @@
 %ul.nav.navbar-nav.navbar-right
   %li= link_to fa_icon('user') + 'Pals', users_path
   %li= link_to fa_icon('envelope') + 'Mailbox', mailboxes_path
-  %li= link_to "Profile", user_path(current_user)
+  %li= link_to fa_icon('profile') + "Profile", user_path(current_user)
   %li.dropdown
     %a#dropdownMenu{ href: user_path(current_user), class:'dropdown-toggle fa fa-user', data: {toggle: 'dropdown'}}
       %i.gyphicon= current_user
       %b.caret
     %ul.dropdown-menu{ role: "menu", aria: {labelledby: "dropdownMenu"}}
-      %li= link_to "Help", help_path
-      %li= link_to "Edit Profile", edit_user_registration_path
+      %li= link_to fa_icon('speak') + "Help", help_path
+      %li= link_to fa_icon('edit') + "Edit Profile", edit_user_registration_path
       %li.divider
-      %li= link_to "logout", destroy_user_session_path, method: :delete
+      %li= link_to fa_icon('logout') + "logout", destroy_user_session_path, method: :delete
 -#%form.navbar-form.pull-right
   -#.group-form
     -#%input.search-query{ type: "text", placeholder: "Search", class: 'form-control'}
