@@ -19,7 +19,10 @@ gem 'puma'
 gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', group: [:development, :test]
-gem 'pg', group: [:production]
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
