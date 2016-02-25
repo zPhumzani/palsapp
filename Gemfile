@@ -15,6 +15,7 @@ gem 'font-awesome-rails'
 gem 'public_activity'
 gem 'friendly_id'
 gem 'puma'
+gem 'cowsay'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record
