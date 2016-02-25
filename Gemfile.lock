@@ -127,6 +127,7 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (= 0.3.0)
+    pg (0.18.4)
     public_activity (1.4.2)
       actionpack (>= 3.0.0)
       activerecord (>= 3.0)
@@ -226,6 +227,7 @@ DEPENDENCIES
   jquery-rails
   mailboxer
   paperclip
+  pg
   public_activity
   puma
   rails (= 4.2.5)
