@@ -4,7 +4,6 @@
 # Examples:
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
 User.create(first_name: 'King', last_name: 'Hormms', gender: 'Male', email: 'king@gmail.com', password: 'majorars', password_confirmation: 'majorars')
 User.create(first_name: 'Emanuel', last_name: 'Loaded', gender: 'Male', email: 'emanuel@gmail.com', password: 'majorars', password_confirmation: 'majorars')
 User.create(first_name: 'Chris', last_name: 'Mic', gender: 'Male', email: 'chris@gmail.com', password: 'majorars', password_confirmation: 'majorars')
