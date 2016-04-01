@@ -3,4 +3,16 @@
   = render_activities @activities
 .well
   %h5 Users
-  %p.text-muted To be fixed soon
+  %ul.list-group
+  - @side_users.find_each do |user| 
+    - unless current_user == user 
+      %li.media
+        .media-left
+          - if user.photos.present?
+            = image_tag user.photos.last.image.url(:thumb)
+          - else
+            = image_tag('anon.png', width: 70)
+        .media-body
+          %h3= link_to user, user
+          %p= user.bio
+          %small

@@ -8,6 +8,9 @@ class UsersController < ApplicationController
     @users = User.includes(:photos, :profile).order("RANDOM()").paginate(page: params[:page], per_page: 10)
     @followers = current_user.followers.all
     @leaders = current_user.leaders.all
+    @user_profile = true
+    @show_user_right_bar = true
+    @user = current_user
   end
 
   # GET /users/1

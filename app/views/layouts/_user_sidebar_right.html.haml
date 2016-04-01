@@ -4,12 +4,29 @@
       %h3 
         Followers
         %small.badge.pull-right= @followers.count
-    - @followers.each do |follower| 
-      = link_to follower, follower
+    %ul.list-group
+      - @followers.each do |follower| 
+        %li.media
+          .media-left
+            - if follower.photos.present?
+              = image_tag follower.photos.last.image.url(:thumb)
+            - else
+              = image_tag('anon.png', width: 70)
+          .media-body
+            %p= link_to follower, follower
+
   .well
     .page-header
       %h3 
         Following 
         %small.badge.pull-right= @leaders.count
-    - @leaders.each do |leader|
-      %p= link_to leader, leader
+    %ul.list-group
+      - @leaders.each do |leader|
+        %li.media
+          .media-left
+            - if leader.photos.present?
+              = image_tag leader.photos.last.image.url(:thumb)
+            - else
+              = image_tag('anon.png', width: 70)
+          .media-body
+            %p= link_to leader, leader

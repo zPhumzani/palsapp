@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :side_users
 
   rescue_from ActiveRecord::RecordNotFound do 
     flash[:alert] = "Resource not found"
@@ -13,6 +14,10 @@ class ApplicationController < ActionController::Base
   def redirect_back_or(path)
     redirect_to request.referer || path
   end
+
+  def side_users
+    @side_users = User.order("RANDOM()").limit(10)
+  end 
 
   protected
 

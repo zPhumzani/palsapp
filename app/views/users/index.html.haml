@@ -3,19 +3,19 @@
   %span.pull-right
     %small 
 
-.row
+.row.clearfix
   - @users.find_each do |user| 
     - unless current_user == user 
-      .col-md-4.col-sm-4.clearfix
-        .media
-          .media-left
-            - if user.photos.present?
-              = image_tag user.photos.last.image.url(:thumb)
-            - else
-              = image_tag('anon.png', width: 70)
-          .media-body
-            %h3= link_to user, user
-            %p= user.bio
-            %small
+      .col-md-4.col-sm-4.thumbnail
+        - if user.photos.present?
+          = image_tag user.photos.last.image.url, class: 'img-responsive'
+        - else
+          %p.thumbnail= image_tag('anon.png', class: 'img-circle')
+        %h4= link_to user, user
+        - if (current_user and user != current_user)
+          - if current_user.following? user
+            = link_to 'Unfollow', unfollow_user_path(user), method: :delete, class: 'btn btn-danger btn-sm'
+          - else
+            = link_to "Follow", follow_user_path(user), method: :post, class: 'btn btn-success btn-sm'
 
 = will_paginate @users, renderer: BootstrapPagination::Rails
